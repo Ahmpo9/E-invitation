@@ -106,3 +106,31 @@ button:hover {
 #generatedLink:hover {
     text-decoration: underline;
 }
+document.getElementById('createInvitationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Daten aus dem Formular sammeln
+    const eventType = document.getElementById('eventType').value;
+    const eventDate = document.getElementById('eventDate').value;
+    const eventLocation = document.getElementById('eventLocation').value;
+    const hostName1 = document.getElementById('hostName1').value;
+    const hostName2 = document.getElementById('hostName2').value;
+    const maxGuests = document.getElementById('maxGuests').value;
+
+    // Einladungslink erstellen (Beispiel: Einfache URL mit Parametern)
+    const invitationData = {
+        type: eventType,
+        date: eventDate,
+        location: eventLocation,
+        host1: hostName1,
+        host2: hostName2,
+        guests: maxGuests
+    };
+    const baseUrl = window.location.href.split('?')[0]; // Aktuelle URL ohne Parameter
+    const invitationLink = `${baseUrl}?invitation=${encodeURIComponent(JSON.stringify(invitationData))}`;
+
+    // Link anzeigen
+    document.getElementById('generatedLink').href = invitationLink;
+    document.getElementById('generatedLink').textContent = invitationLink;
+    document.getElementById('invitationLink').classList.remove('hidden');
+});
