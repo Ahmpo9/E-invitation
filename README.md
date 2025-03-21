@@ -287,3 +287,7 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+// Einfache JavaScript-Funktionen können hier hinzugefügt werden
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Website geladen');
+});
