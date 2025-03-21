@@ -3,19 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Erweiterte Website</title>
+    <title>Einladung erstellen</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Willkommen auf meiner erweiterten Website</h1>
+        <h1>Erstellen Sie Ihre Einladung</h1>
     </header>
     <main>
-        <p>Dies ist eine erweiterte Beispielwebsite.</p>
-        <button id="clickMe">Klick mich!</button>
+        <!-- Formular zur Erstellung der Einladung -->
+        <form id="createInvitationForm">
+            <label for="eventType">Art der Veranstaltung:</label>
+            <select id="eventType" name="eventType" required>
+                <option value="Hochzeit">Hochzeit</option>
+                <option value="Geburtstag">Geburtstag</option>
+                <option value="Party">Party</option>
+                <option value="Andere">Andere</option>
+            </select>
+
+            <label for="eventDate">Datum:</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+
+            <label for="eventLocation">Ort:</label>
+            <input type="text" id="eventLocation" name="eventLocation" required>
+
+            <label for="hostName1">Name des Gastgebers 1 (z. B. Braut):</label>
+            <input type="text" id="hostName1" name="hostName1" required>
+
+            <label for="hostName2">Name des Gastgebers 2 (z. B. Bräutigam):</label>
+            <input type="text" id="hostName2" name="hostName2" required>
+
+            <label for="maxGuests">Maximale Anzahl der Gäste:</label>
+            <input type="number" id="maxGuests" name="maxGuests" required>
+
+            <button type="submit">Einladung erstellen</button>
+        </form>
+
+        <!-- Link zur Einladung -->
+        <div id="invitationLink" class="hidden">
+            <h2>Ihr Einladungslink:</h2>
+            <a id="generatedLink" target="_blank">Link zur Einladung</a>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2023 Mein Name</p>
+        <p>&copy; 2025 Einladungsgenerator</p>
     </footer>
     <script src="script.js"></script>
 </body>
@@ -35,21 +66,43 @@ header {
 }
 main {
     padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-top: 10px;
+}
+input, select, textarea, button {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
 }
 button {
-    padding: 10px 20px;
-    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
     cursor: pointer;
 }
-document.getElementById('clickMe').addEventListener('click', function() {
-    alert('Danke für den Klick!');
-});
+button:hover {
+    background-color: #555;
+}
+.hidden {
+    display: none;
+}
+#invitationLink {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+#generatedLink {
+    color: #007BFF;
+    text-decoration: none;
+}
+#generatedLink:hover {
+    text-decoration: underline;
+}
